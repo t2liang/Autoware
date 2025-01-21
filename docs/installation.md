@@ -26,6 +26,20 @@ source /opt/ros/galactic/setup.bash
 rosdep update --include-eol-distros
 rosdep install -y --from-paths src --ignore-src --rosdistro $ROS_DISTRO -r
 ```
+3. Create swapfiles
+```python
+sudo swapoff /swapfile
+sudo rm /swapfile`
+sudo fallocate -l 32G /swapfile
+sudo chmod 600 /swapfile
+sudo mkswap /swapfile
+sudo swapon /swapfile
+```
+4. Build workspace
+
+`colcon build --symlink-install --cmake-args -DCMAKE_BUILD_TYPE=Release`
+
+
 
 
 
